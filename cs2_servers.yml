@@ -84,9 +84,13 @@
       chdir: /home/ansible
 
   - name: make update script executable
+    become: true
+    become_user: root
     command:
       cmd: 'chmod +x cs2update.sh'
       chdir: /home/ansible
+
+#may need to update script before run!!!
 
 #todo: run scipt which will login to steamcmd (must run steamcmd and log in to account beofre running script)
 
