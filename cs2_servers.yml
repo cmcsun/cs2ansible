@@ -2,6 +2,7 @@
 - hosts: linuxservers
   become: yes
   become_user: root
+  #assume user on system is named 'ansible' and has wheel role in users. assume ssh copy id used and no passphrase for ssh key
   tasks: 
   - name: Update package database and install required packages
     become: true
@@ -25,6 +26,14 @@
     file:
       path: /home/ansible/cs2server
       state: directory
+      
+   #- name: Ensure destination directory exists
+   #   file:
+   #     path: '/path/to/destination/directory'
+   #     state: directory
+   #     mode: '0755'
+
+
 
   - name: dl and install steamcmd
     unarchive:
@@ -44,6 +53,17 @@
     command:
       cmd: 'chmod +x /home/ansible/cs2server/steamcmd.sh'
       chdir: /home/ansible/cs2server
+
+  # - name: Copy .so file to new location
+  #    copy:
+  #      src: '/path/where/tarball/was/extracted/somefile.so'
+  #     dest: '/path/to/destination/directory/somefile.so'
+
+  # - name: Copy .so file to new location
+  #    copy:
+  #      src: '/path/where/tarball/was/extracted/somefile.so'
+  #     dest: '/path/to/destination/directory/somefile.so'
+
 
   - name: get update script
     command:
