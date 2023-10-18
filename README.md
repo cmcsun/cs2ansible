@@ -9,9 +9,11 @@ ansible playbook for deploying cs2 servers
 
 before running the playbook. user named ansible on master node. user named ansible on slave nodes. each ssh key must be copied before using ansible. the hosts.ini assumes there is no ssh key passphrase. edit accordingly
 
-sudo python create_user_with_sudo.py to create user on slave node
+git clone this repo on master and slave
 
-python3 copy_ssh_keys.py ansible sshcopyidhosts.ini
+sudo python create_user_with_sudo.py to create user on slave node -  do on slave
+
+python3 copy_ssh_keys.py ansible sshcopyidhosts.ini -  do on master
 
 to run playbook: ansible-playbook cs2_servers.yml -i hosts.ini --ask-become-pass
 
