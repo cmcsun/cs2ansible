@@ -72,11 +72,6 @@
   #      src: '/path/where/tarball/was/extracted/somefile.so'
   #     dest: '/path/to/destination/directory/somefile.so'
 
-  # - name: Copy .so file to new location
-  #    copy:
-  #      src: '/path/where/tarball/was/extracted/somefile.so'
-  #     dest: '/path/to/destination/directory/somefile.so'
-
 
   - name: get update script
     command:
@@ -90,7 +85,36 @@
       cmd: 'chmod +x cs2update.sh'
       chdir: /home/ansible
 
+  - name: make directory .steam
+    become: true
+    become_user: root
+    command:
+      cmd: 'mkdir .steam'
+      chdir: /home/ansible
+
+  - name: make directory sdk64 in .steam
+    become: true
+    become_user: root
+    command:
+      cmd: 'mkdir sdk64'
+      chdir: /home/ansible/.steam
+
   - name: make everything owned by user
+    become: true
+    become_user: root
+    command:
+      cmd: "chown ansible:ansible -R /home/ansible"
+      chdir: /home/ansible
+
+  - name: Copy .so file to new location
+    become: true
+    become_user: root
+    copy:
+      src: /home/ansible/cs2server/linux64/steamclient.so
+      dest: /home/ansible/.steam/sdk64/steamclient.so
+      remote_src: yes
+
+  - name: make everything owned by user again
     become: true
     become_user: root
     command:
