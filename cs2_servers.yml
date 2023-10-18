@@ -1,0 +1,51 @@
+---
+- hosts: linuxservers
+  become: yes
+  become_user: root
+  tasks: 
+  - name: Update package database and install required packages
+    become: true
+    become_user: root
+    pacman:
+      update_cache: yes
+      state: present
+      name:
+        - lib32-gcc-libs
+        - base-devel
+        - linux-headers
+        - tmux
+        - git
+        - ponysay
+        - cowsay
+        - fortune-mod
+        - wget
+        - curl
+
+  - name: create directory for cs2 server
+    file:
+      path: /home/ansible/cs2server
+      state: directory
+
+  - name: dl and install steamcmd
+    unarchive:
+      src: https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz
+      dest: /home/ansible/cs2server
+      remote_src: yes
+
+  - name: make the thing owned
+    become: true
+    become_user: root
+    command: 
+      cmd: "chown ansible:ansible -R /home/ansible/"
+
+  - name: make steamcmd.sh executable?
+    become: true
+    become_user: root
+    command:
+      cmd: 'chmod +x /home/ansible/cs2server/steamcmd.sh'
+      chdir: /home/ansible/cs2server
+
+  - name: get update script
+    command:
+      cmd: 'wget https://gist.githubusercontent.com/cmcsun/66293635efa3fe7e64af0c5af4352fea/raw/cfb045ef580cb18ad17b9bfd918e46d7421a7070/cs2update.sh'
+      chdir: /home/ansible
