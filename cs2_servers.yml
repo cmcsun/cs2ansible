@@ -80,7 +80,7 @@
 
   - name: get update script
     command:
-      cmd: 'wget https://gist.githubusercontent.com/cmcsun/66293635efa3fe7e64af0c5af4352fea/raw/cfb045ef580cb18ad17b9bfd918e46d7421a7070/cs2update.sh'
+      cmd: 'wget https://gist.githubusercontent.com/cmcsun/231a5a6ac08e81176bd6fe80d41ca14b/raw/f55f6d00c925451bd1759d7f029f791f3b37a213/cs2update.sh'
       chdir: /home/ansible
 
   - name: make update script executable
@@ -89,6 +89,17 @@
     command:
       cmd: 'chmod +x cs2update.sh'
       chdir: /home/ansible
+
+  - name: make everything owned by user
+    become: true
+    become_user: root
+    command:
+      cmd: "chown ansible:ansible -R /home/ansible"
+      chdir: /home/ansible
+
+  #task here to copy .so file to new location(s)
+  #
+  #can we run the script with ansible and have it fork to background? something with tmux involved im sure
 
 #may need to update script before run!!!
 
