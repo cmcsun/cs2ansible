@@ -11,6 +11,8 @@ before running the playbook. user named ansible on master node. user named ansib
 
 sudo python create_user_with_sudo.py to create user on slave node
 
+python3 copy_ssh_keys.py ansible sshcopyidhosts.ini
+
 to run playbook: ansible-playbook cs2_servers.yml -i hosts.ini --ask-become-pass
 
 can also use ansible secret vault to store password for the ansible user to use sudo access on the box its running on
