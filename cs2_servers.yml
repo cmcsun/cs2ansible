@@ -83,4 +83,13 @@
       cmd: 'wget https://gist.githubusercontent.com/cmcsun/66293635efa3fe7e64af0c5af4352fea/raw/cfb045ef580cb18ad17b9bfd918e46d7421a7070/cs2update.sh'
       chdir: /home/ansible
 
+  - name: make update script executable
+    command:
+      cmd: 'chmod +x cs2update.sh'
+      chdir: /home/ansible
+
 #todo: run scipt which will login to steamcmd (must run steamcmd and log in to account beofre running script)
+
+        #  - name: run cs2update.sh
+        #    command:
+        #      cmd
