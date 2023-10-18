@@ -4,6 +4,19 @@
   become_user: root
   #assume user on system is named 'ansible' and has wheel role in users. assume ssh copy id used and no passphrase for ssh key
   tasks: 
+
+  - name: update packages
+    become: true
+    become_user: root
+    command:
+      cmd: 'pacman -Syuu --noconfirm'
+      
+  - name: update packages
+    become: true
+    become_user: root
+    command:
+      cmd: 'pacman -Syyu --noconfirm'
+      
   - name: Update package database and install required packages
     become: true
     become_user: root
