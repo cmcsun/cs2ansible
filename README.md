@@ -3,8 +3,8 @@ ansible playbook for deploying cs2 servers
  
   
   # todo: add support for plugins sourcemod/metamod
+  # todo: make it not necessary to manually login to steamcmd before running the final script cs2update.sh
   # todo: automate tmux and run script automatically (how?)
-  # todo: python script to run on server master to copy ssh id to hosts in hosts.ini
 
 
 before running the playbook. user named ansible on master node. user named ansible on slave nodes. each ssh key must be copied before using ansible. the hosts.ini assumes there is no ssh key passphrase. edit accordingly
