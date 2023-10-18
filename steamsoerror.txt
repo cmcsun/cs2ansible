@@ -1,0 +1,7 @@
+/home/ansible/.steam/sdk64/steamclient.so: cannot open shared object file: No such file or directory
+[S_API] SteamAPI_Init(): Failed to load module '/home/ansible/.steam/sdk64/steamclient.so'
+Failed to initialize Steamworks SDK for gameserver.  Failed to load module '/home/ansible/.steam/sdk64/steamclient.so'
+ 0 Failed to initialize Steamworks SDK for gameserver.  Failed to load module '/home/ansible/.steam/sdk64/steamclient.so'
+
+./cs2update.sh: line 9:  1731 Segmentation fault      (core dumped) ./cs2 -dedicated -console -usercon +game_type 1 +game_mode 2 +map de_nuke +sv_setsteamaccount 4573F4520B8B0A882BC4E31A9C9A60A2
+Success!
