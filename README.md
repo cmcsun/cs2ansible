@@ -13,6 +13,8 @@ git clone this repo on master and slave
 
 sudo python create_user_with_sudo.py to create user on slave node -  do on slave
 
+create ssh key - do on master
+
 python3 copy_ssh_keys.py ansible sshcopyidhosts.ini -  do on master
 
 to run playbook: ansible-playbook cs2_servers.yml -i hosts.ini --ask-become-pass
