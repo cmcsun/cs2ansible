@@ -11,7 +11,7 @@ before running the playbook. user named ansible on master node. user named ansib
 
 git clone this repo on master and slave
 
-sudo python create_user_with_sudo.py to create user on slave node -  do on slave
+sudo python create_user_with_sudo.py to create user on slave node -  do on slave (works on Arch, does not work on fedora for some reason)
 
 create ssh key - do on master
 
@@ -20,13 +20,13 @@ python3 copy_ssh_keys.py ansible sshcopyidhosts.ini -  do on master
 to run playbook: ansible-playbook cs2_servers.yml -i hosts.ini --ask-become-pass
 (can also use ansible secret vault to store password for the ansible user to use sudo access on the box its running on)
 
-WILL FAIL HERE: NO SUCH FILE OR DIRECTORY
+will fail here: NO SUCH FILE OR DIRECTORY
 
-NEED TO RUN STEAMCMD
+run steamcmd
 
-LOGIN
+login to user on steamcmd
 
-DELETE .STEAM
+Delete .steam directory
 
 run playbook again
 
