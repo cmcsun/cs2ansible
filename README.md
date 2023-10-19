@@ -15,6 +15,8 @@ sudo python create_user_with_sudo.py to create user on slave node -  do on slave
 
 create ssh key - do on master
 
+edit sshcopyidhosts.ini with hosts to copy ssh key to
+
 python3 copy_ssh_keys.py ansible sshcopyidhosts.ini -  do on master
 
 to run playbook: ansible-playbook cs2_servers.yml -i hosts.ini --ask-become-pass
